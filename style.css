@@ -1096,3 +1096,15 @@ select:focus {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--primary-orange);
 }
+
+/* Corrige centralização da section-divider no mobile */
+@media (max-width: 768px) {
+  .section-header {
+    text-align: center;
+  }
+
+  .section-divider {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
