@@ -226,7 +226,7 @@ const Forms = {
       await new Promise((resolve) => setTimeout(resolve, 1500))
 
       const message = this.createWhatsAppMessage(data)
-      const whatsappUrl = `https://wa.me/5511973933390?text=${encodeURIComponent(message)}`
+      const whatsappUrl = `https://wa.me/5511971596167?text=${encodeURIComponent(message)}`
 
       window.open(whatsappUrl, "_blank")
 
