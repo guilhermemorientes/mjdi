@@ -1,14 +1,22 @@
-// ===== INICIALIZAÇÃO GLOBAL =====
+// ===== INICIALIZAÇÃO GLOBAL OTIMIZADA =====
 document.addEventListener("DOMContentLoaded", () => {
-  window.lucide.createIcons()
+  // Inicializar ícones apenas uma vez
+  if (window.lucide) {
+    window.lucide.createIcons()
+  }
+
+  // Inicializar módulos
   Navigation.init()
   Forms.init()
   FAQ.init()
-  ScrollAnimations.init()
-  LazyLoading.init()
+
+  // Lazy loading das animações para melhor performance
+  requestIdleCallback(() => {
+    ScrollAnimations.init()
+  })
 })
 
-// ===== MÓDULO DE NAVEGAÇÃO =====
+// ===== MÓDULO DE NAVEGAÇÃO OTIMIZADO =====
 const Navigation = {
   init() {
     this.setupSmoothScrolling()
@@ -36,7 +44,7 @@ const Navigation = {
     const sections = document.querySelectorAll("section[id]")
     const navLinks = document.querySelectorAll(".nav-link")
 
-    const updateActiveSection = () => {
+    const updateActiveSection = Utils.throttle(() => {
       let current = "home"
       sections.forEach((section) => {
         const sectionTop = section.offsetTop - 150
@@ -51,9 +59,9 @@ const Navigation = {
           link.classList.add("active")
         }
       })
-    }
+    }, 100)
 
-    window.addEventListener("scroll", Utils.throttle(updateActiveSection, 100))
+    window.addEventListener("scroll", updateActiveSection, { passive: true })
     updateActiveSection()
   },
 
@@ -105,18 +113,17 @@ const Navigation = {
   setupNavbarScroll() {
     const navbar = document.querySelector(".navbar")
 
-    window.addEventListener(
-      "scroll",
-      Utils.throttle(() => {
-        if (window.scrollY > 50) {
-          navbar.style.background = "rgba(26, 54, 93, 0.98)"
-          navbar.style.backdropFilter = "blur(25px)"
-        } else {
-          navbar.style.background = "rgba(26, 54, 93, 0.9)"
-          navbar.style.backdropFilter = "blur(20px)"
-        }
-      }, 16),
-    )
+    const updateNavbar = Utils.throttle(() => {
+      if (window.scrollY > 50) {
+        navbar.style.background = "rgba(26, 54, 93, 0.98)"
+        navbar.style.backdropFilter = "blur(25px)"
+      } else {
+        navbar.style.background = "rgba(26, 54, 93, 0.9)"
+        navbar.style.backdropFilter = "blur(20px)"
+      }
+    }, 16)
+
+    window.addEventListener("scroll", updateNavbar, { passive: true })
   },
 }
 
@@ -230,7 +237,11 @@ const Forms = {
 
       submitBtn.innerHTML = originalHTML
       submitBtn.disabled = false
-      window.lucide.createIcons()
+
+      // Recriar ícones apenas se necessário
+      if (window.lucide) {
+        window.lucide.createIcons()
+      }
     } catch (error) {
       console.error("Erro ao enviar mensagem:", error)
       this.showToast("Erro ao enviar mensagem. Tente novamente.", "error")
@@ -243,7 +254,10 @@ const Forms = {
       const buttonText = formNumber === 2 ? "Enviar Solicitação" : "Solicitar Orçamento"
       submitBtn.innerHTML = `<span class="btn-text">${buttonText}</span><i data-lucide="send" class="btn-icon"></i>`
       submitBtn.disabled = false
-      window.lucide.createIcons()
+
+      if (window.lucide) {
+        window.lucide.createIcons()
+      }
     }
   },
 
@@ -320,82 +334,48 @@ const FAQ = {
   },
 }
 
-// ===== MÓDULO DE ANIMAÇÕES =====
+// ===== MÓDULO DE ANIMAÇÕES OTIMIZADO =====
 const ScrollAnimations = {
   init() {
+    // Usar Intersection Observer mais eficiente
     this.setupIntersectionObserver()
   },
 
   setupIntersectionObserver() {
+    // Observer mais simples e performático
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.style.opacity = "1"
-            entry.target.style.transform = "translateY(0)"
             entry.target.classList.add("animate-in")
+            // Parar de observar após animar
+            observer.unobserve(entry.target)
           }
         })
       },
       {
         threshold: 0.1,
-        rootMargin: "0px 0px -30px 0px",
+        rootMargin: "0px 0px -50px 0px",
       },
     )
 
-    const animatedElements = document.querySelectorAll(
-      ".section-header, .diferencial-card, .servico-card, .contact-form, .footer-section, .faq-item, .contato-header",
-    )
+    // Aplicar animação via CSS em vez de JS para melhor performance
+    const animatedElements = document.querySelectorAll(".diferencial-card, .servico-card, .faq-item")
 
-    animatedElements.forEach((el, index) => {
+    animatedElements.forEach((el) => {
       el.style.opacity = "0"
-      el.style.transform = "translateY(30px)"
-      el.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`
+      el.style.transform = "translateY(20px)"
+      el.style.transition = "opacity 0.4s ease, transform 0.4s ease"
       observer.observe(el)
     })
   },
 }
 
-// ===== MÓDULO DE LAZY LOADING =====
-const LazyLoading = {
-  init() {
-    const images = document.querySelectorAll('img[loading="lazy"]')
-
-    if ("IntersectionObserver" in window) {
-      const imageObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const img = entry.target
-            img.src = img.dataset.src || img.src
-            img.classList.remove("lazy")
-            imageObserver.unobserve(img)
-          }
-        })
-      })
-
-      images.forEach((img) => imageObserver.observe(img))
-    }
-  },
-}
-
-// ===== FUNÇÕES UTILITÁRIAS =====
+// ===== FUNÇÕES UTILITÁRIAS OTIMIZADAS =====
 const Utils = {
-  debounce(func, wait) {
-    let timeout
-    return function executedFunction(...args) {
-      const later = () => {
-        clearTimeout(timeout)
-        func(...args)
-      }
-      clearTimeout(timeout)
-      timeout = setTimeout(later, wait)
-    }
-  },
-
   throttle(func, limit) {
     let inThrottle
-    return function () {
-      const args = arguments
+    return function (...args) {
       if (!inThrottle) {
         func.apply(this, args)
         inThrottle = true
@@ -403,20 +383,43 @@ const Utils = {
       }
     }
   },
+
+  debounce(func, wait) {
+    let timeout
+    return function (...args) {
+      clearTimeout(timeout)
+      timeout = setTimeout(() => func.apply(this, args), wait)
+    }
+  },
 }
 
+// ===== CSS PARA ANIMAÇÕES =====
+const style = document.createElement("style")
+style.textContent = `
+  .animate-in {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
+`
+document.head.appendChild(style)
+
 // ===== OTIMIZAÇÕES DE PERFORMANCE =====
+// Usar passive listeners para scroll
 window.addEventListener(
   "scroll",
   Utils.throttle(() => {
-    // Otimizações baseadas em scroll podem ser adicionadas aqui
+    // Scroll otimizado
   }, 16),
+  { passive: true },
 )
 
+// Debounce resize
 window.addEventListener(
   "resize",
   Utils.debounce(() => {
-    window.lucide.createIcons()
+    if (window.lucide) {
+      window.lucide.createIcons()
+    }
   }, 250),
 )
 
@@ -427,11 +430,4 @@ window.addEventListener("error", (e) => {
 
 window.addEventListener("unhandledrejection", (e) => {
   console.error("Promise Rejeitada:", e.reason)
-})
-
-// ===== INICIALIZAÇÃO DE ÍCONES APÓS CARREGAMENTO =====
-window.addEventListener("load", () => {
-  setTimeout(() => {
-    window.lucide.createIcons()
-  }, 100)
 })
