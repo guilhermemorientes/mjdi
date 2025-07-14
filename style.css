@@ -668,9 +668,9 @@ body {
 .faq-icon {
   width: 20px;
   height: 20px;
-  transition: var(--transition);
   flex-shrink: 0;
   margin-left: 1rem;
+  transition: var(--transition);
 }
 
 .faq-item.active .faq-icon {
@@ -678,25 +678,25 @@ body {
   color: var(--primary-orange);
 }
 
-/* Estilo base da resposta */
 .faq-answer {
-  padding: 1.25rem 1.5rem 1.5rem;
-  background: transparent;
-  color: rgba(255, 255, 255, 0.9);
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+  opacity: 0;
   max-height: 0;
   overflow: hidden;
-  transition: background 0.3s ease, color 0.3s ease, max-height 0.3s ease;
+  padding: 0 1.5rem;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.9);
   font-size: 0.95rem;
   line-height: 1.6;
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+  transition: background 0.3s ease, color 0.3s ease, max-height 0.3s ease, opacity 0.3s ease, padding 0.3s ease;
 }
 
-/* Quando ativo, inverte as cores */
 .faq-item.active .faq-answer {
+  opacity: 1;
+  max-height: 500px;
+  padding: 1.25rem 1.5rem 1.5rem;
   background: white;
   color: var(--primary-blue);
-  max-height: 500px;
 }
 
 /* ===== SEÇÃO CONTATO ===== */
@@ -1100,16 +1100,4 @@ select:focus {
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--primary-orange);
-}
-
-/* Corrige centralização da section-divider no mobile */
-@media (max-width: 768px) {
-  .section-header {
-    text-align: center;
-  }
-
-  .section-divider {
-    margin-left: auto;
-    margin-right: auto;
-  }
 }
