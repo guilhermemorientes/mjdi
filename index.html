@@ -6,6 +6,10 @@
     <title>Munck Jundiaí - Serviços de Munck e Guindauto</title>
     <meta name="description" content="Munck Jundiaí - Serviços especializados em Munck e Guindauto, içamento e transporte de cargas pesadas. Atendemos Jundiaí e região com segurança e qualidade.">
 
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+    <link rel="shortcut icon" href="img/favicon.ico">
+
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Munck Jundiaí - Serviços de Guindaste">
@@ -29,7 +33,7 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo">
-                <i data-lucide="truck" class="logo-icon"></i>
+                <img src="img/logo.webp" alt="Munck Jundiaí" class="logo-image">
                 <span class="logo-text">Munck Jundiaí</span>
             </div>
 
@@ -218,7 +222,7 @@
             <div class="servicos-grid">
                 <div class="servico-card">
                     <div class="servico-icon">
-                        <i data-lucide="crane"></i>
+                        <i data-lucide="move"></i>
                     </div>
                     <h3>Içamento de Cargas</h3>
                     <p>Movimentação vertical de cargas pesadas com precisão e segurança. Ideal para construção civil e indústria.</p>
@@ -340,13 +344,77 @@
         </div>
     </section>
 
+    <!-- Contato Section -->
+    <section id="contato-form" class="contato-section">
+        <div class="container">
+            <div class="contato-content">
+                <div class="contato-header">
+                    <h2 class="section-title">Entre em <span class="accent-text">Contato</span></h2>
+                    <div class="section-divider"></div>
+                    <p class="section-subtitle">Solicite seu orçamento personalizado e tire suas dúvidas conosco</p>
+                </div>
+
+                <div class="contato-form-container">
+                    <div class="contact-form">
+                        <form id="contactForm2" class="form">
+                            <div class="form-row">
+                                <div class="input-group">
+                                    <i data-lucide="user" class="input-icon"></i>
+                                    <input type="text" id="nome2" placeholder="Nome Completo" required>
+                                </div>
+                                <div class="input-group">
+                                    <i data-lucide="phone" class="input-icon"></i>
+                                    <input type="tel" id="telefone2" placeholder="WhatsApp" required>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="input-group">
+                                    <i data-lucide="mail" class="input-icon"></i>
+                                    <input type="email" id="email2" placeholder="E-mail">
+                                </div>
+                                <div class="input-group">
+                                    <i data-lucide="map-pin" class="input-icon"></i>
+                                    <input type="text" id="cidade2" placeholder="Cidade" required>
+                                </div>
+                            </div>
+
+                            <div class="input-group">
+                                <i data-lucide="package" class="input-icon"></i>
+                                <select id="servico2" required>
+                                    <option value="" disabled selected>Tipo de Serviço</option>
+                                    <option value="icamento">Içamento de Cargas</option>
+                                    <option value="transporte">Transporte Pesado</option>
+                                    <option value="containers">Movimentação de Containers</option>
+                                    <option value="maquinas">Máquinas Industriais</option>
+                                    <option value="estruturas">Estruturas Metálicas</option>
+                                    <option value="outros">Outros</option>
+                                </select>
+                            </div>
+
+                            <div class="input-group textarea-group">
+                                <i data-lucide="message-square" class="input-icon"></i>
+                                <textarea id="mensagem2" placeholder="Descreva sua necessidade (peso, dimensões, local...)" rows="4"></textarea>
+                            </div>
+
+                            <button type="submit" class="btn-submit">
+                                <span class="btn-text">Enviar Solicitação</span>
+                                <i data-lucide="send" class="btn-icon"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
-    <footer id="contato" class="footer">
+    <footer id="footer" class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
                     <div class="footer-brand">
-                        <i data-lucide="truck" class="footer-logo"></i>
+                        <img src="img/logo.webp" alt="Munck Jundiaí" class="footer-logo">
                         <span>Munck Jundiaí</span>
                     </div>
                     <p class="footer-tagline">Soluções em Munck e Guindauto para cargas pesadas</p>
