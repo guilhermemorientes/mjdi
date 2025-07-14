@@ -3,17 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eng. Lucas Santos - Engenharia Civil</title>
-    <meta name="description" content="Eng. Lucas Santos - Engenheiro Civil formado pela PUC Campinas. Construindo parcerias sólidas e projetos de excelência.">
+    <title>Munck Jundiaí - Serviços de Munck e Guindauto</title>
+    <meta name="description" content="Munck Jundiaí - Serviços especializados em Munck e Guindauto, içamento e transporte de cargas pesadas. Atendemos Jundiaí e região com segurança e qualidade.">
 
-    <!-- Open Graph / Compartilhamento -->
+    <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Eng. Lucas Santos - Engenharia Civil">
-    <meta property="og:description" content="Engenheiro Civil formado pela PUC Campinas. Construindo parcerias sólidas e projetos de excelência.">
-    <meta property="og:image" content="img/background.webp">
+    <meta property="og:title" content="Munck Jundiaí - Serviços de Guindaste">
+    <meta property="og:description" content="Serviços especializados em Munck e Guindauto, içamento e transporte de cargas pesadas em Jundiaí e região.">
     <meta property="og:locale" content="pt_BR">
 
-    <!-- Google Fonts - Fontes Minimalistas Modernas -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -30,16 +29,18 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo">
-                <img src="img/logo.png" alt="Eng. Lucas Santos" class="logo-icon">
-                <span class="logo-text">Eng. Lucas Santos</span>
+                <i data-lucide="truck" class="logo-icon"></i>
+                <span class="logo-text">Munck Jundiaí</span>
             </div>
 
-            <!-- Desktop Menu -->
             <div class="nav-menu">
                 <a href="#home" class="nav-link active">Home</a>
+                <a href="#diferenciais" class="nav-link">Diferenciais</a>
+                <a href="#servicos" class="nav-link">Serviços</a>
+                <a href="#faq" class="nav-link">FAQ</a>
+                <a href="#contato" class="nav-link">Contato</a>
             </div>
 
-            <!-- Mobile Menu Button -->
             <button class="mobile-menu-toggle" aria-label="Menu">
                 <span class="hamburger"></span>
                 <span class="hamburger"></span>
@@ -47,9 +48,12 @@
             </button>
         </div>
 
-        <!-- Mobile Menu -->
         <div class="mobile-menu">
             <a href="#home" class="mobile-nav-link">Home</a>
+            <a href="#diferenciais" class="mobile-nav-link">Diferenciais</a>
+            <a href="#servicos" class="mobile-nav-link">Serviços</a>
+            <a href="#faq" class="mobile-nav-link">FAQ</a>
+            <a href="#contato" class="mobile-nav-link">Contato</a>
         </div>
     </nav>
 
@@ -57,25 +61,38 @@
     <section id="home" class="hero">
         <div class="container">
             <div class="hero-content">
-                <!-- Hero Text -->
                 <div class="hero-text">
                     <h1>
-                        <span class="accent-text">Fale Com<br> Lucas Santos.</span>
+                        <span class="accent-text">Munck Jundiaí</span>
                         <br>
-                        <span class="main-text">Construindo Parcerias.</span>
+                        <span class="main-text">Soluções em Içamento</span>
                     </h1>
                     <p class="hero-subtitle">
-                        Engenheiro Civil formado pela<br>Pontifícia Universidade Católica de Campinas.
+                        Serviços especializados em Munck e Guindauto, transporte e içamento de cargas pesadas.<br>
+                        Atendemos Jundiaí e toda a região com segurança e qualidade.
                     </p>
                     <div class="hero-accent"></div>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">15t</span>
+                            <span class="stat-label">Capacidade</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">24h</span>
+                            <span class="stat-label">Emergência</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">+500</span>
+                            <span class="stat-label">Serviços</span>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Contact Form -->
                 <div class="hero-form-container">
                     <div class="contact-form">
                         <div class="form-header">
-                            <h3>Entre em Contato</h3>
-                            <p>Preencha os campos abaixo e retornaremos em breve</p>
+                            <h3>Solicite um Orçamento</h3>
+                            <p>Preencha os dados e retornaremos rapidamente</p>
                         </div>
 
                         <form id="contactForm" class="form">
@@ -85,38 +102,40 @@
                             </div>
 
                             <div class="input-group">
-                                <i data-lucide="mail" class="input-icon"></i>
-                                <input type="email" id="email" placeholder="E-mail" required>
-                            </div>
-
-                            <div class="input-group">
                                 <i data-lucide="phone" class="input-icon"></i>
-                                <input type="tel" id="telefone" placeholder="Telefone / WhatsApp" required>
+                                <input type="tel" id="telefone" placeholder="WhatsApp" required>
                             </div>
 
                             <div class="input-group">
-                                <i data-lucide="briefcase" class="input-icon"></i>
-                                <input type="text" id="empresa" placeholder="Empresa (opcional)">
+                                <i data-lucide="mail" class="input-icon"></i>
+                                <input type="email" id="email" placeholder="E-mail">
                             </div>
 
                             <div class="input-group">
-                                <i data-lucide="handshake" class="input-icon"></i>
-                                <select id="interesse" required>
-                                    <option value="" disabled selected>Interesse</option>
-                                    <option value="comprador">Comprador</option>
-                                    <option value="fornecedor">Fornecedor</option>
-                                    <option value="parcerias">Parcerias</option>
+                                <i data-lucide="map-pin" class="input-icon"></i>
+                                <input type="text" id="cidade" placeholder="Cidade" required>
+                            </div>
+
+                            <div class="input-group">
+                                <i data-lucide="package" class="input-icon"></i>
+                                <select id="servico" required>
+                                    <option value="" disabled selected>Tipo de Serviço</option>
+                                    <option value="icamento">Içamento de Cargas</option>
+                                    <option value="transporte">Transporte Pesado</option>
+                                    <option value="containers">Movimentação de Containers</option>
+                                    <option value="maquinas">Máquinas Industriais</option>
+                                    <option value="estruturas">Estruturas Metálicas</option>
                                     <option value="outros">Outros</option>
                                 </select>
                             </div>
 
                             <div class="input-group textarea-group">
                                 <i data-lucide="message-square" class="input-icon"></i>
-                                <textarea id="mensagem" placeholder="Mensagem adicional (opcional)" rows="4"></textarea>
+                                <textarea id="mensagem" placeholder="Descreva sua necessidade (peso, dimensões, local...)" rows="4"></textarea>
                             </div>
 
                             <button type="submit" class="btn-submit">
-                                <span class="btn-text">Enviar Mensagem</span>
+                                <span class="btn-text">Solicitar Orçamento</span>
                                 <i data-lucide="send" class="btn-icon"></i>
                             </button>
                         </form>
@@ -126,29 +145,195 @@
         </div>
     </section>
 
-    <!-- Brands Section -->
-    <section class="brands-section">
+    <!-- Diferenciais Section -->
+    <section id="diferenciais" class="diferenciais-section">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">
-                    Nossos <span class="accent-text">Parceiros</span>
-                </h2>
+                <h2 class="section-title">Nossos <span class="accent-text">Diferenciais</span></h2>
                 <div class="section-divider"></div>
+                <p class="section-subtitle">Por que escolher a Munck Jundiaí para seus projetos</p>
             </div>
 
-            <div class="brands-container">
-                <div class="brands-grid">
-                    <div class="brand-card">
-                        <img src="img/acry.png" alt="Acry Engenharia" loading="lazy">
+            <div class="diferenciais-grid">
+                <div class="diferencial-card">
+                    <div class="diferencial-icon">
+                        <i data-lucide="shield-check"></i>
                     </div>
-                    <div class="brand-card">
-                        <img src="img/abbud.png" alt="Abbud Engenharia" loading="lazy">
+                    <h3>Segurança Total</h3>
+                    <p>Operadores certificados e equipamentos com manutenção rigorosa para máxima segurança em todas as operações.</p>
+                </div>
+
+                <div class="diferencial-card">
+                    <div class="diferencial-icon">
+                        <i data-lucide="clock"></i>
                     </div>
-                    <div class="brand-card">
-                        <img src="img/ohtake.png" alt="Ohtake" loading="lazy">
+                    <h3>Agilidade</h3>
+                    <p>Atendimento rápido e eficiente. Chegamos ao local em tempo recorde para não atrasar seus projetos.</p>
+                </div>
+
+                <div class="diferencial-card">
+                    <div class="diferencial-icon">
+                        <i data-lucide="wrench"></i>
                     </div>
-                    <div class="brand-card">
-                        <img src="img/gresca.png" alt="Construtora Gresca" loading="lazy">
+                    <h3>Equipamentos Modernos</h3>
+                    <p>Frota renovada com guindastes de última geração, capacidade até 15 toneladas e tecnologia avançada.</p>
+                </div>
+
+                <div class="diferencial-card">
+                    <div class="diferencial-icon">
+                        <i data-lucide="users"></i>
+                    </div>
+                    <h3>Equipe Especializada</h3>
+                    <p>Profissionais experientes e qualificados, com treinamento constante em normas de segurança.</p>
+                </div>
+
+                <div class="diferencial-card">
+                    <div class="diferencial-icon">
+                        <i data-lucide="map"></i>
+                    </div>
+                    <h3>Cobertura Regional</h3>
+                    <p>Atendemos Jundiaí e toda região: Várzea Paulista, Campo Limpo, Itupeva, Louveira, Vinhedo e Cabreúva.</p>
+                </div>
+
+                <div class="diferencial-card">
+                    <div class="diferencial-icon">
+                        <i data-lucide="phone-call"></i>
+                    </div>
+                    <h3>Suporte 24h</h3>
+                    <p>Atendimento de emergência disponível 24 horas para situações urgentes e imprevistas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Serviços Section -->
+    <section id="servicos" class="servicos-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Nossos Serviços</h2>
+                <div class="section-divider"></div>
+                <p class="section-subtitle">Soluções completas em içamento e transporte de cargas</p>
+            </div>
+
+            <div class="servicos-grid">
+                <div class="servico-card">
+                    <div class="servico-icon">
+                        <i data-lucide="crane"></i>
+                    </div>
+                    <h3>Içamento de Cargas</h3>
+                    <p>Movimentação vertical de cargas pesadas com precisão e segurança. Ideal para construção civil e indústria.</p>
+                </div>
+
+                <div class="servico-card">
+                    <div class="servico-icon">
+                        <i data-lucide="container"></i>
+                    </div>
+                    <h3>Containers</h3>
+                    <p>Movimentação e posicionamento de containers para armazenagem, escritórios e projetos especiais.</p>
+                </div>
+
+                <div class="servico-card">
+                    <div class="servico-icon">
+                        <i data-lucide="cog"></i>
+                    </div>
+                    <h3>Máquinas Industriais</h3>
+                    <p>Transporte e instalação de equipamentos industriais pesados com cuidado e precisão técnica.</p>
+                </div>
+
+                <div class="servico-card">
+                    <div class="servico-icon">
+                        <i data-lucide="zap"></i>
+                    </div>
+                    <h3>Postes e Torres</h3>
+                    <p>Instalação de postes de iluminação, torres de telecomunicações e estruturas verticais.</p>
+                </div>
+
+                <div class="servico-card">
+                    <div class="servico-icon">
+                        <i data-lucide="building"></i>
+                    </div>
+                    <h3>Estruturas Metálicas</h3>
+                    <p>Montagem de estruturas metálicas, galpões industriais e elementos pré-fabricados.</p>
+                </div>
+
+                <div class="servico-card">
+                    <div class="servico-icon">
+                        <i data-lucide="truck"></i>
+                    </div>
+                    <h3>Transporte Especial</h3>
+                    <p>Transporte de cargas especiais, equipamentos agrícolas e materiais de grandes dimensões.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Dúvidas <span class="accent-text">Frequentes</span></h2>
+                <div class="section-divider"></div>
+                <p class="section-subtitle">Esclarecemos as principais dúvidas sobre nossos serviços</p>
+            </div>
+
+            <div class="faq-container">
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Qual é o horário de funcionamento da Munck Jundiaí?</span>
+                        <i data-lucide="chevron-down" class="faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Atendemos de segunda a sábado, das 7h às 18h. Em casos urgentes, realizamos atendimentos sob agendamento especial.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Qual o valor médio de um serviço com Munck?</span>
+                        <i data-lucide="chevron-down" class="faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>O valor depende do tipo de carga, distância, tempo de operação e capacidade exigida. Oferecemos orçamentos personalizados e sem compromisso.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Qual a capacidade de peso que o Munck pode elevar?</span>
+                        <i data-lucide="chevron-down" class="faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Nossos equipamentos suportam içamentos de até 15 toneladas, conforme o tipo de Munck e o alcance horizontal necessário.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Atendem apenas em Jundiaí ou outras cidades também?</span>
+                        <i data-lucide="chevron-down" class="faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Atendemos Jundiaí e toda a região, incluindo cidades como Várzea Paulista, Campo Limpo Paulista, Itupeva, Louveira, Vinhedo e Cabreúva.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Quais tipos de carga vocês transportam?</span>
+                        <i data-lucide="chevron-down" class="faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Transportamos máquinas industriais, containers, postes, estruturas metálicas, tanques, bobinas, equipamentos agrícolas e muito mais.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>O serviço inclui operador e equipe para o Munck?</span>
+                        <i data-lucide="chevron-down" class="faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Sim! Todos os nossos serviços incluem operador qualificado e, quando necessário, equipe de apoio para garantir a segurança da operação.</p>
                     </div>
                 </div>
             </div>
@@ -156,56 +341,76 @@
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer id="contato" class="footer">
         <div class="container">
             <div class="footer-content">
-                <!-- Brand -->
                 <div class="footer-section">
-                    <div class="footer-brand">Eng. Lucas Santos</div>
-                    <p class="footer-tagline">CREA-SP: 00000</p>
+                    <div class="footer-brand">
+                        <i data-lucide="truck" class="footer-logo"></i>
+                        <span>Munck Jundiaí</span>
+                    </div>
+                    <p class="footer-tagline">Soluções em Munck e Guindauto para cargas pesadas</p>
+                    <div class="footer-certifications">
+                        <span class="cert-item">CNPJ: 00.000.000/0001-00</span>
+                    </div>
                 </div>
 
-                <!-- Contact -->
                 <div class="footer-section">
                     <h4>Contato</h4>
                     <div class="footer-contact">
-                        <div class="contact-item">
-                            <i data-lucide="mail" class="contact-icon"></i>
-                            <span>contato@lucassantos.com.br</span>
-                        </div>
                         <div class="contact-item">
                             <i data-lucide="phone" class="contact-icon"></i>
                             <span>(11) 97393-3390</span>
                         </div>
                         <div class="contact-item">
+                            <i data-lucide="mail" class="contact-icon"></i>
+                            <span>contato@munckjundiai.com.br</span>
+                        </div>
+                        <div class="contact-item">
+                            <i data-lucide="map-pin" class="contact-icon"></i>
+                            <span>Jundiaí - SP e Região</span>
+                        </div>
+                        <div class="contact-item">
                             <i data-lucide="clock" class="contact-icon"></i>
-                            <span>Seg a Sex: 07h às 17h</span>
+                            <span>Seg a Sáb: 7h às 18h</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Social -->
                 <div class="footer-section">
                     <h4>Redes Sociais</h4>
                     <div class="social-icons">
-                        <a href="https://www.facebook.com/lucasstalmeida" target="_blank" class="social-icon facebook" aria-label="Facebook">
-                            <span>f</span>
+                        <a href="https://www.facebook.com/munckjundiai" target="_blank" class="social-icon facebook" aria-label="Facebook">
+                            <i data-lucide="facebook"></i>
                         </a>
-                        <a href="https://www.instagram.com/blueloungejundiai/" target="_blank" class="social-icon instagram" aria-label="Instagram">
-                            <span>@</span>
+                        <a href="https://www.instagram.com/munckjundiai" target="_blank" class="social-icon instagram" aria-label="Instagram">
+                            <i data-lucide="instagram"></i>
                         </a>
+                        <a href="https://wa.me/5511973933390" target="_blank" class="social-icon whatsapp" aria-label="WhatsApp">
+                            <i data-lucide="message-circle"></i>
+                        </a>
+                    </div>
+                    <div class="emergency-contact">
+                        <p class="emergency-text">Emergência 24h:</p>
+                        <a href="tel:+5511973933390" class="emergency-phone">(11) 97393-3390</a>
                     </div>
                 </div>
             </div>
 
             <div class="footer-bottom">
-                <p>&copy; 2025 Eng. Lucas Santos – Todos os direitos reservados.</p>
+                <p>&copy; 2025 Munck Jundiaí - Todos os direitos reservados.</p>
             </div>
         </div>
     </footer>
 
     <!-- Toast -->
     <div id="toast" class="toast"></div>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/5511973933390?text=Olá! Gostaria de solicitar um orçamento para serviços de Munck." 
+       class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+    <span class="whatsapp-icon">💬</span>
+</a>
 
     <!-- JavaScript -->
     <script src="main.js"></script>
