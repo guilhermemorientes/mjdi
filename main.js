@@ -1,10 +1,9 @@
 // ===== INICIALIZAÇÃO GLOBAL =====
 document.addEventListener("DOMContentLoaded", () => {
-  // Inicializar ícones Lucide
   window.lucide.createIcons()
-
   Navigation.init()
   Forms.init()
+  FAQ.init()
   ScrollAnimations.init()
   LazyLoading.init()
 })
@@ -69,7 +68,6 @@ const Navigation = {
       menu.classList.toggle("active")
       toggle.classList.toggle("active")
 
-      // Animar hamburger
       const hamburgers = toggle.querySelectorAll(".hamburger")
       hamburgers.forEach((bar, index) => {
         if (toggle.classList.contains("active")) {
@@ -88,7 +86,6 @@ const Navigation = {
         menu.classList.remove("active")
         toggle.classList.remove("active")
 
-        // Reset hamburger
         const hamburgers = toggle.querySelectorAll(".hamburger")
         hamburgers.forEach((bar) => {
           bar.style.transform = "none"
@@ -97,7 +94,6 @@ const Navigation = {
       })
     })
 
-    // Fechar menu com ESC
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape" && menu.classList.contains("active")) {
         menu.classList.remove("active")
@@ -113,10 +109,10 @@ const Navigation = {
       "scroll",
       Utils.throttle(() => {
         if (window.scrollY > 50) {
-          navbar.style.background = "rgba(26, 22, 17, 0.98)"
+          navbar.style.background = "rgba(26, 54, 93, 0.98)"
           navbar.style.backdropFilter = "blur(25px)"
         } else {
-          navbar.style.background = "rgba(26, 22, 17, 0.95)"
+          navbar.style.background = "rgba(26, 54, 93, 0.9)"
           navbar.style.backdropFilter = "blur(20px)"
         }
       }, 16),
@@ -132,13 +128,22 @@ const Forms = {
   },
 
   setupContactForm() {
-    const form = document.getElementById("contactForm")
-    if (!form) return
+    const form1 = document.getElementById("contactForm")
+    const form2 = document.getElementById("contactForm2")
 
-    form.addEventListener("submit", (e) => {
-      e.preventDefault()
-      this.handleContactSubmit(form)
-    })
+    if (form1) {
+      form1.addEventListener("submit", (e) => {
+        e.preventDefault()
+        this.handleContactSubmit(form1, 1)
+      })
+    }
+
+    if (form2) {
+      form2.addEventListener("submit", (e) => {
+        e.preventDefault()
+        this.handleContactSubmit(form2, 2)
+      })
+    }
   },
 
   setupFormValidation() {
@@ -161,7 +166,7 @@ const Forms = {
 
     if (!isValid && field.hasAttribute("required")) {
       group.classList.add("error")
-      field.style.borderColor = "var(--error)"
+      field.style.borderColor = "var(--error-red)"
     } else {
       group.classList.remove("error")
       field.style.borderColor = ""
@@ -176,56 +181,53 @@ const Forms = {
     field.style.borderColor = ""
   },
 
-  handleContactSubmit(form) {
+  handleContactSubmit(form, formNumber) {
+    const suffix = formNumber === 2 ? "2" : ""
     const data = {
-      nome: document.getElementById("nome").value,
-      email: document.getElementById("email").value,
-      telefone: document.getElementById("telefone").value,
-      empresa: document.getElementById("empresa").value,
-      interesse: document.getElementById("interesse").value,
-      mensagem: document.getElementById("mensagem").value,
+      nome: document.getElementById(`nome${suffix}`).value,
+      telefone: document.getElementById(`telefone${suffix}`).value,
+      email: document.getElementById(`email${suffix}`).value,
+      cidade: document.getElementById(`cidade${suffix}`).value,
+      servico: document.getElementById(`servico${suffix}`).value,
+      mensagem: document.getElementById(`mensagem${suffix}`).value,
     }
 
-    // Validar formulário
     if (!this.validateForm(data)) {
       this.showToast("Por favor, preencha todos os campos obrigatórios.", "error")
       return
     }
 
-    // Enviar formulário
-    this.submitContact(data)
+    this.submitContact(data, formNumber)
   },
 
   validateForm(data) {
-    const requiredFields = ["nome", "email", "telefone", "interesse"]
+    const requiredFields = ["nome", "telefone", "cidade", "servico"]
     return requiredFields.every((field) => data[field] && data[field].trim() !== "")
   },
 
-  async submitContact(data) {
+  async submitContact(data, formNumber = 1) {
     try {
-      // Estado de carregamento
-      const submitBtn = document.querySelector(".btn-submit")
+      const submitBtn =
+        formNumber === 2
+          ? document.querySelector("#contactForm2 .btn-submit")
+          : document.querySelector("#contactForm .btn-submit")
+
       const originalHTML = submitBtn.innerHTML
       submitBtn.innerHTML = '<span class="btn-text">Enviando...</span>'
       submitBtn.disabled = true
 
-      // Simular chamada API
       await new Promise((resolve) => setTimeout(resolve, 1500))
 
-      // Criar mensagem WhatsApp
       const message = this.createWhatsAppMessage(data)
       const whatsappUrl = `https://wa.me/5511973933390?text=${encodeURIComponent(message)}`
 
-      // Abrir WhatsApp
       window.open(whatsappUrl, "_blank")
 
-      // Reset formulário
-      document.getElementById("contactForm").reset()
+      const formId = formNumber === 2 ? "contactForm2" : "contactForm"
+      document.getElementById(formId).reset()
 
-      // Mensagem de sucesso
       this.showToast("Mensagem enviada! Redirecionando para o WhatsApp.", "success")
 
-      // Reset botão
       submitBtn.innerHTML = originalHTML
       submitBtn.disabled = false
       window.lucide.createIcons()
@@ -233,26 +235,30 @@ const Forms = {
       console.error("Erro ao enviar mensagem:", error)
       this.showToast("Erro ao enviar mensagem. Tente novamente.", "error")
 
-      // Reset botão
-      const submitBtn = document.querySelector(".btn-submit")
-      submitBtn.innerHTML = '<span class="btn-text">Enviar Mensagem</span><i data-lucide="send" class="btn-icon"></i>'
+      const submitBtn =
+        formNumber === 2
+          ? document.querySelector("#contactForm2 .btn-submit")
+          : document.querySelector("#contactForm .btn-submit")
+
+      const buttonText = formNumber === 2 ? "Enviar Solicitação" : "Solicitar Orçamento"
+      submitBtn.innerHTML = `<span class="btn-text">${buttonText}</span><i data-lucide="send" class="btn-icon"></i>`
       submitBtn.disabled = false
       window.lucide.createIcons()
     }
   },
 
   createWhatsAppMessage(data) {
-    return `🏗️ *CONTATO - ENG. LUCAS SANTOS*
+    return `🚛 *ORÇAMENTO - MUNCK JUNDIAÍ*
 
 👤 *Nome:* ${data.nome}
-📧 *Email:* ${data.email}
 📱 *Telefone:* ${data.telefone}
-${data.empresa ? `🏢 *Empresa:* ${data.empresa}` : ""}
-🎯 *Interesse:* ${data.interesse}
-${data.mensagem ? `💬 *Mensagem:* ${data.mensagem}` : ""}
+${data.email ? `📧 *Email:* ${data.email}` : ""}
+📍 *Cidade:* ${data.cidade}
+🔧 *Serviço:* ${data.servico}
+${data.mensagem ? `💬 *Detalhes:* ${data.mensagem}` : ""}
 
 ---
-Enviado pelo site institucional`
+Solicitação via site oficial`
   },
 
   showToast(message, type = "success") {
@@ -265,6 +271,52 @@ Enviado pelo site institucional`
     setTimeout(() => {
       toast.classList.remove("show")
     }, 4000)
+  },
+}
+
+// ===== MÓDULO FAQ =====
+const FAQ = {
+  init() {
+    this.setupFAQToggle()
+  },
+
+  setupFAQToggle() {
+    const faqQuestions = document.querySelectorAll(".faq-question")
+
+    faqQuestions.forEach((question) => {
+      question.addEventListener("click", () => {
+        const faqItem = question.closest(".faq-item")
+        const isActive = faqItem.classList.contains("active")
+
+        // Fechar todos os outros FAQs
+        document.querySelectorAll(".faq-item").forEach((item) => {
+          if (item !== faqItem) {
+            item.classList.remove("active")
+            const otherQuestion = item.querySelector(".faq-question")
+            otherQuestion.setAttribute("aria-expanded", "false")
+          }
+        })
+
+        // Toggle do FAQ atual
+        if (isActive) {
+          faqItem.classList.remove("active")
+          question.setAttribute("aria-expanded", "false")
+        } else {
+          faqItem.classList.add("active")
+          question.setAttribute("aria-expanded", "true")
+        }
+      })
+    })
+
+    // Suporte para teclado
+    faqQuestions.forEach((question) => {
+      question.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault()
+          question.click()
+        }
+      })
+    })
   },
 }
 
@@ -291,8 +343,9 @@ const ScrollAnimations = {
       },
     )
 
-    // Observar elementos para animação
-    const animatedElements = document.querySelectorAll(".section-header, .brand-card, .contact-form, .footer-section")
+    const animatedElements = document.querySelectorAll(
+      ".section-header, .diferencial-card, .servico-card, .contact-form, .footer-section, .faq-item, .contato-header",
+    )
 
     animatedElements.forEach((el, index) => {
       el.style.opacity = "0"
@@ -363,7 +416,6 @@ window.addEventListener(
 window.addEventListener(
   "resize",
   Utils.debounce(() => {
-    // Lidar com eventos de redimensionamento
     window.lucide.createIcons()
   }, 250),
 )
@@ -377,74 +429,9 @@ window.addEventListener("unhandledrejection", (e) => {
   console.error("Promise Rejeitada:", e.reason)
 })
 
-function doPost(e) {
-  try {
-    const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Leads");
-
-    let data = {};
-
-    // Suporte a JSON e FormData
-    if (e.postData && e.postData.type === "application/json") {
-      data = JSON.parse(e.postData.contents);
-    } else {
-      data = e.parameter;
-    }
-
-    // Validação dos campos obrigatórios
-    const camposObrigatorios = ["nome", "email", "telefone"];
-    for (let campo of camposObrigatorios) {
-      if (!data[campo]) {
-        return ContentService.createTextOutput(JSON.stringify({
-          success: false,
-          error: `Campo obrigatório faltando: ${campo}`
-        })).setMimeType(ContentService.MimeType.JSON);
-      }
-    }
-
-    const dataHora = new Date();
-
-    // Inserção na planilha com todos os campos
-    sheet.appendRow([
-      dataHora.toLocaleString('pt-BR'),
-      data.nome,
-      data.email,
-      data.telefone,
-      data.empresa || "Não informado",
-      data.interesse || "Não informado",
-      data.mensagem || "Nenhuma"
-    ]);
-
-    // Envio de e-mail (ajustado com mais dados)
-    const mensagem = `
-Novo lead - Lucas Santos:
-
-Nome: ${data.nome}
-Email: ${data.email}
-Telefone: ${data.telefone}
-Empresa: ${data.empresa || "Não informado"}
-Interesse: ${data.interesse || "Não informado"}
-Mensagem: ${data.mensagem || "Nenhuma"}
-Data/Hora: ${dataHora.toLocaleString('pt-BR')}
-    `.trim();
-
-    GmailApp.sendEmail(
-      "guilhermemorientes@gmail.com, rogergmr@gmail.com",
-      "Novo Lead - Lucas Santos",
-      mensagem,
-      { replyTo: data.email }
-    );
-
-    return ContentService.createTextOutput(
-      JSON.stringify({ success: true })
-    ).setMimeType(ContentService.MimeType.JSON);
-
-  } catch (err) {
-    return ContentService.createTextOutput(
-      JSON.stringify({ success: false, error: err.toString() })
-    ).setMimeType(ContentService.MimeType.JSON);
-  }
-}
-
-function doGet() {
-  return ContentService.createTextOutput("API ativa!").setMimeType(ContentService.MimeType.TEXT);
-}
+// ===== INICIALIZAÇÃO DE ÍCONES APÓS CARREGAMENTO =====
+window.addEventListener("load", () => {
+  setTimeout(() => {
+    window.lucide.createIcons()
+  }, 100)
+})
