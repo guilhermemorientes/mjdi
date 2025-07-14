@@ -1,15 +1,15 @@
 /* ===== PALETA MUNCK JUNDIAÍ ===== */
 :root {
   /* Cores Principais */
-  --primary-orange: #ff6b35; /* Laranja industrial - destaque principal */
-  --primary-blue: #1a365d; /* Azul escuro - confiança e solidez */
-  --secondary-gray: #4a5568; /* Cinza médio - textos secundários */
-  --accent-yellow: #ffd700; /* Amarelo - destaque técnico */
-  --background-main: #f7fafc; /* Cinza muito claro - fundo principal */
-  --text-primary: #2d3748; /* Cinza escuro - textos principais */
-  --text-secondary: #718096; /* Cinza médio - textos secundários */
-  --success-green: #38a169; /* Verde - sucesso */
-  --error-red: #e53e3e; /* Vermelho - erro */
+  --primary-orange: #ff6b35;
+  --primary-blue: #1a365d;
+  --secondary-gray: #4a5568;
+  --accent-yellow: #ffd700;
+  --background-main: #f7fafc;
+  --text-primary: #2d3748;
+  --text-secondary: #718096;
+  --success-green: #38a169;
+  --error-red: #e53e3e;
 
   /* Variações */
   --primary-orange-light: rgba(255, 107, 53, 0.1);
@@ -21,9 +21,9 @@
   --font-primary: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
   --font-display: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
 
-  /* Transições */
-  --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  --transition-fast: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  /* Transições Otimizadas */
+  --transition: all 0.2s ease;
+  --transition-fast: all 0.15s ease;
 
   /* Sombras */
   --shadow-sm: 0 1px 3px rgba(26, 54, 93, 0.1);
@@ -58,26 +58,6 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-/* Background Industrial */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background: linear-gradient(
-      135deg,
-      rgba(26, 54, 93, 0.85) 0%,
-      rgba(26, 54, 93, 0.7) 25%,
-      rgba(26, 54, 93, 0.5) 50%,
-      rgba(26, 54, 93, 0.7) 75%,
-      rgba(26, 54, 93, 0.85) 100%
-    ), linear-gradient(45deg, #1a365d 25%, transparent 25%), linear-gradient(-45deg, #1a365d 25%, transparent 25%),
-    linear-gradient(45deg, transparent 75%, #1a365d 75%), linear-gradient(-45deg, transparent 75%, #1a365d 75%);
-  background-size: 100% 100%, 20px 20px, 20px 20px, 20px 20px, 20px 20px;
-  background-position: 0 0, 0 0, 0 10px, 10px -10px, -10px 0px;
-  opacity: 0.03;
-  z-index: -1;
 }
 
 /* ===== UTILITÁRIOS ===== */
@@ -135,16 +115,15 @@ body::before {
   transform: translateY(-1px);
 }
 
-.logo-icon {
-  width: 32px;
+.logo-image {
   height: 32px;
-  color: var(--primary-orange);
+  width: auto;
+  object-fit: contain;
   transition: var(--transition-fast);
 }
 
-.logo:hover .logo-icon {
+.logo:hover .logo-image {
   transform: scale(1.05);
-  color: var(--accent-yellow);
 }
 
 .logo-text {
@@ -252,18 +231,9 @@ body::before {
   display: flex;
   align-items: center;
   padding-top: 70px;
-  background: linear-gradient(135deg, rgba(26, 54, 93, 0.9) 0%, rgba(44, 82, 130, 0.9) 100%),
-    url("https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80")
+  background: linear-gradient(135deg, rgba(26, 54, 93, 0.9) 0%, rgba(44, 82, 130, 0.9) 100%), url("img/background.webp")
     center center / cover no-repeat;
   position: relative;
-}
-
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ff6b35' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-  z-index: 0;
 }
 
 .hero-content {
@@ -486,22 +456,11 @@ body::before {
 .diferenciais-section {
   padding: 5rem 0;
   background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
-  position: relative;
-}
-
-.diferenciais-section::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%231a365d' fill-opacity='0.02'%3E%3Cpath d='M20 20c0-11.046-8.954-20-20-20v20h20z'/%3E%3C/g%3E%3C/svg%3E");
-  z-index: 0;
 }
 
 .section-header {
   text-align: center;
   margin-bottom: 3rem;
-  position: relative;
-  z-index: 1;
 }
 
 .section-title {
@@ -532,8 +491,6 @@ body::before {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
-  position: relative;
-  z-index: 1;
 }
 
 .diferencial-card {
@@ -737,6 +694,30 @@ body::before {
   line-height: 1.6;
 }
 
+/* ===== SEÇÃO CONTATO ===== */
+.contato-section {
+  padding: 5rem 0;
+  background: linear-gradient(135deg, var(--background-main) 0%, #edf2f7 100%);
+}
+
+.contato-form-container {
+  display: flex;
+  justify-content: center;
+}
+
+.contato-form-container .contact-form {
+  max-width: 600px;
+  width: 100%;
+  padding: 2.5rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
 /* ===== FOOTER ===== */
 .footer {
   background: var(--primary-blue);
@@ -771,9 +752,9 @@ body::before {
 }
 
 .footer-logo {
-  width: 28px;
   height: 28px;
-  color: var(--primary-orange);
+  width: auto;
+  object-fit: contain;
 }
 
 .footer-tagline {
@@ -1027,9 +1008,14 @@ body::before {
     height: 50px;
   }
 
-  .whatsapp-float i {
-    width: 24px;
-    height: 24px;
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .contato-form-container .contact-form {
+    max-width: 400px;
+    padding: 2rem;
   }
 }
 
@@ -1098,59 +1084,4 @@ select:focus {
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--primary-orange);
-}
-
-/* ===== SEÇÃO CONTATO ===== */
-.contato-section {
-  padding: 5rem 0;
-  background: linear-gradient(135deg, var(--background-main) 0%, #edf2f7 100%);
-  position: relative;
-}
-
-.contato-section::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ff6b35' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='3'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-  z-index: 0;
-}
-
-.contato-content {
-  position: relative;
-  z-index: 1;
-}
-
-.contato-header {
-  text-align: center;
-  margin-bottom: 3rem;
-}
-
-.contato-form-container {
-  display: flex;
-  justify-content: center;
-}
-
-.contato-form-container .contact-form {
-  max-width: 600px;
-  width: 100%;
-  padding: 2.5rem;
-}
-
-.form-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-  margin-bottom: 1rem;
-}
-
-@media (max-width: 768px) {
-  .form-row {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-
-  .contato-form-container .contact-form {
-    max-width: 400px;
-    padding: 2rem;
-  }
 }
