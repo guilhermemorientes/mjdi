@@ -678,20 +678,25 @@ body {
   color: var(--primary-orange);
 }
 
+/* Estilo base da resposta */
 .faq-answer {
+  padding: 1.25rem 1.5rem 1.5rem;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.9);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.3s ease;
-}
-
-.faq-item.active .faq-answer {
-  max-height: 200px;
-}
-
-.faq-answer p {
-  padding: 0 1.5rem 1.5rem;
-  color: rgba(255, 255, 255, 0.9);
+  transition: background 0.3s ease, color 0.3s ease, max-height 0.3s ease;
+  font-size: 0.95rem;
   line-height: 1.6;
+}
+
+/* Quando ativo, inverte as cores */
+.faq-item.active .faq-answer {
+  background: white;
+  color: var(--primary-blue);
+  max-height: 500px;
 }
 
 /* ===== SEÇÃO CONTATO ===== */
