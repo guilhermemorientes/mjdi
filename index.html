@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eng. Lucas Santos - Engenharia Civil</title>
+    <meta name="description" content="Eng. Lucas Santos - Engenheiro Civil formado pela PUC Campinas. Construindo parcerias sólidas e projetos de excelência.">
+
+    <!-- Open Graph / Compartilhamento -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Eng. Lucas Santos - Engenharia Civil">
+    <meta property="og:description" content="Engenheiro Civil formado pela PUC Campinas. Construindo parcerias sólidas e projetos de excelência.">
+    <meta property="og:image" content="img/background.webp">
+    <meta property="og:locale" content="pt_BR">
+
+    <!-- Google Fonts - Fontes Minimalistas Modernas -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="img/logo.png" alt="Eng. Lucas Santos" class="logo-icon">
+                <span class="logo-text">Eng. Lucas Santos</span>
+            </div>
+
+            <!-- Desktop Menu -->
+            <div class="nav-menu">
+                <a href="#home" class="nav-link active">Home</a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button class="mobile-menu-toggle" aria-label="Menu">
+                <span class="hamburger"></span>
+                <span class="hamburger"></span>
+                <span class="hamburger"></span>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu">
+            <a href="#home" class="mobile-nav-link">Home</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <!-- Hero Text -->
+                <div class="hero-text">
+                    <h1>
+                        <span class="accent-text">Fale Com<br> Lucas Santos.</span>
+                        <br>
+                        <span class="main-text">Construindo Parcerias.</span>
+                    </h1>
+                    <p class="hero-subtitle">
+                        Engenheiro Civil formado pela<br>Pontifícia Universidade Católica de Campinas.
+                    </p>
+                    <div class="hero-accent"></div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="hero-form-container">
+                    <div class="contact-form">
+                        <div class="form-header">
+                            <h3>Entre em Contato</h3>
+                            <p>Preencha os campos abaixo e retornaremos em breve</p>
+                        </div>
+
+                        <form id="contactForm" class="form">
+                            <div class="input-group">
+                                <i data-lucide="user" class="input-icon"></i>
+                                <input type="text" id="nome" placeholder="Nome Completo" required>
+                            </div>
+
+                            <div class="input-group">
+                                <i data-lucide="mail" class="input-icon"></i>
+                                <input type="email" id="email" placeholder="E-mail" required>
+                            </div>
+
+                            <div class="input-group">
+                                <i data-lucide="phone" class="input-icon"></i>
+                                <input type="tel" id="telefone" placeholder="Telefone / WhatsApp" required>
+                            </div>
+
+                            <div class="input-group">
+                                <i data-lucide="briefcase" class="input-icon"></i>
+                                <input type="text" id="empresa" placeholder="Empresa (opcional)">
+                            </div>
+
+                            <div class="input-group">
+                                <i data-lucide="handshake" class="input-icon"></i>
+                                <select id="interesse" required>
+                                    <option value="" disabled selected>Interesse</option>
+                                    <option value="comprador">Comprador</option>
+                                    <option value="fornecedor">Fornecedor</option>
+                                    <option value="parcerias">Parcerias</option>
+                                    <option value="outros">Outros</option>
+                                </select>
+                            </div>
+
+                            <div class="input-group textarea-group">
+                                <i data-lucide="message-square" class="input-icon"></i>
+                                <textarea id="mensagem" placeholder="Mensagem adicional (opcional)" rows="4"></textarea>
+                            </div>
+
+                            <button type="submit" class="btn-submit">
+                                <span class="btn-text">Enviar Mensagem</span>
+                                <i data-lucide="send" class="btn-icon"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brands Section -->
+    <section class="brands-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    Nossos <span class="accent-text">Parceiros</span>
+                </h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="brands-container">
+                <div class="brands-grid">
+                    <div class="brand-card">
+                        <img src="img/acry.png" alt="Acry Engenharia" loading="lazy">
+                    </div>
+                    <div class="brand-card">
+                        <img src="img/abbud.png" alt="Abbud Engenharia" loading="lazy">
+                    </div>
+                    <div class="brand-card">
+                        <img src="img/ohtake.png" alt="Ohtake" loading="lazy">
+                    </div>
+                    <div class="brand-card">
+                        <img src="img/gresca.png" alt="Construtora Gresca" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <!-- Brand -->
+                <div class="footer-section">
+                    <div class="footer-brand">Eng. Lucas Santos</div>
+                    <p class="footer-tagline">CREA-SP: 00000</p>
+                </div>
+
+                <!-- Contact -->
+                <div class="footer-section">
+                    <h4>Contato</h4>
+                    <div class="footer-contact">
+                        <div class="contact-item">
+                            <i data-lucide="mail" class="contact-icon"></i>
+                            <span>contato@lucassantos.com.br</span>
+                        </div>
+                        <div class="contact-item">
+                            <i data-lucide="phone" class="contact-icon"></i>
+                            <span>(11) 97393-3390</span>
+                        </div>
+                        <div class="contact-item">
+                            <i data-lucide="clock" class="contact-icon"></i>
+                            <span>Seg a Sex: 07h às 17h</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Social -->
+                <div class="footer-section">
+                    <h4>Redes Sociais</h4>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/lucasstalmeida" target="_blank" class="social-icon facebook" aria-label="Facebook">
+                            <span>f</span>
+                        </a>
+                        <a href="https://www.instagram.com/blueloungejundiai/" target="_blank" class="social-icon instagram" aria-label="Instagram">
+                            <span>@</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Eng. Lucas Santos – Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast -->
+    <div id="toast" class="toast"></div>
+
+    <!-- JavaScript -->
+    <script src="main.js"></script>
+</body>
+</html>
